@@ -1,5 +1,5 @@
 require_relative './PolyTreeNode/lib/00_tree_node.rb'
-require 'byebug'
+
 class KnightPathFinder
     attr_reader :root, :considered_positions
     def self.valid_moves(pos)
@@ -57,10 +57,9 @@ class KnightPathFinder
 
     def find_path(end_pos)
         end_node = @root.dfs(end_pos)
-        debugger
+        
         path = trace_back_path(end_node)
         path << end_node.value
-        debugger
         path
     end
 
@@ -72,7 +71,3 @@ class KnightPathFinder
     end
 
 end
-
-kpf = KnightPathFinder.new([0, 0])
-p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
-p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
