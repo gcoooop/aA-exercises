@@ -1,8 +1,8 @@
-require "colorize"
 require_relative "piece.rb"
 require_relative "errors.rb"
 
 class Board
+  attr_reader :rows 
 
   STARTING_POSITIONS = [ [0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7],
                          [1,0], [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7],
@@ -10,7 +10,6 @@ class Board
                          [7,0], [7,1], [7,2], [7,3], [7,4], [7,5], [7,6], [7,7] ]
 
   def initialize 
-    #[[n,n,n,n,n,n,n,n],[nn],[],[],[],[],[nn],[nn]]
     @rows = Array.new(8) { Array.new(8, nil) }
     @sentinel = NullPiece.new()
     STARTING_POSITIONS.each do |pos|
@@ -34,8 +33,9 @@ class Board
     # begin 
       if self[start_pos].nil?
         raise NoPieceError.new("There is no piece in this position")
-      end 
-      valid_pos?(end_pos)
+      elsif !valid_pos?(end_pos)
+        raise InvalidMoveError.new("That is not a valid move")
+      end
     # rescue NoPieceError || InvalidMoveError => error 
     #     puts error.message
     #     retry 
@@ -44,11 +44,7 @@ class Board
   end
 
   def valid_pos?(end_pos)
-    if end_pos.all? { |i| i < 8 && i >= 0 } 
-      true 
-    else
-      raise InvalidMoveError.new("That is not a valid move")
-    end
+    end_pos.all? { |i| i < 8 && i >= 0 } 
   end
 
 end
