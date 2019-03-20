@@ -14,7 +14,9 @@ class Display
   def render 
     self.board.rows.each.with_index do |row, idx_x|
       row.each.with_index do |space, idx_y|
-        if self.cursor.cursor_pos == [idx_x, idx_y]
+        if self.cursor.cursor_pos == [idx_x, idx_y] && self.cursor.selected
+          puts "#{space}\s".red
+        elsif self.cursor.cursor_pos == [idx_x, idx_y]
           puts "#{space}\s".blue
         else
           puts "#{space}\s"
