@@ -13,7 +13,8 @@ class Board
     @rows = Array.new(8) { Array.new(8, nil) }
     @sentinel = NullPiece.new()
     STARTING_POSITIONS.each do |pos|
-      self[pos] = Piece.new
+        self[pos] = Rook.new(:yellow, self, pos)
+        # self[pos] = RookBishopQueen.new(:yellow, "queen" )
     end
   end
 
