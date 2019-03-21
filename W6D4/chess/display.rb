@@ -23,18 +23,14 @@ class Display
       row.each.with_index do |space, idx_y|
         square_color = board_pattern(idx_x, idx_y)
 
-        if space.nil? 
-          print "    ".colorize(:background => square_color)
-        else  
-          if self.cursor.cursor_pos == [idx_x, idx_y] && self.cursor.selected
-            print "#{space.inspect}\s".colorize(:color => :red, :background => square_color)
-          elsif self.cursor.cursor_pos == [idx_x, idx_y]
-            print "#{space.inspect}\s".colorize(:color => :blue, :background => square_color)
-          else
-            print "#{space.inspect}\s".colorize(:background => square_color)
-          end
+        if self.cursor.cursor_pos == [idx_x, idx_y] && self.cursor.selected
+          print "#{space.to_s}\s".colorize(:color => :red, :background => square_color)
+        elsif self.cursor.cursor_pos == [idx_x, idx_y]
+          print "#{space.to_s}\s".colorize(:color => :blue, :background => square_color)
+        else
+          print "#{space.to_s}\s".colorize(:background => square_color)
         end
-        
+      
       end
       puts "\n"
     end

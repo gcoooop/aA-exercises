@@ -40,9 +40,10 @@ module Slideable
     poss_moves.select! { |pos| pos[0].between?(0,7) && pos[1].between?(0,7) }
 
     poss_moves.each_with_index do |pos, idx|
-      if self.board[pos].is_a?(Piece) && self.board[pos].color != self.color
+      existing_piece = self.board[pos]
+      if existing_piece.is_a?(Piece) && existing_piece.color != self.color && !existing_piece.is_a?(NullPiece)
         return poss_moves[0..idx]
-      elsif self.board[pos].is_a?(Piece) && self.board[pos].color == self.color
+      elsif existing_piece.is_a?(Piece) && existing_piece.color == self.color && !existing_piece.is_a?(NullPiece)
         return poss_moves[0...idx]
       end
     end
