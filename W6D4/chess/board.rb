@@ -1,5 +1,7 @@
-require_relative "piece.rb"
-require_relative "errors.rb"
+require_relative "piece"
+require_relative "pieces/rook_bishop_queen"
+require_relative "errors"
+require "byebug"
 
 class Board
   attr_reader :rows 
@@ -11,9 +13,9 @@ class Board
 
   def initialize 
     @rows = Array.new(8) { Array.new(8, nil) }
-    @sentinel = NullPiece.new()
+    @sentinel = NullPiece.instance
     STARTING_POSITIONS.each do |pos|
-        # self[pos] = Rook.new(:yellow, self, pos)
+      add_piece(Rook.new(:green, self, pos), pos )
     end
   end
 
@@ -27,7 +29,7 @@ class Board
 
   def add_piece(piece, pos)
     #raise position not empty? 
-    @rows[pos] = piece 
+    self[pos] = piece 
   end
 
   def move_piece(start_pos, end_pos)

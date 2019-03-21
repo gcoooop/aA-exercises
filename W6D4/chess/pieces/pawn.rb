@@ -1,6 +1,7 @@
 class Pawn < Piece 
 
-  def symbol
-    self.symbol = "♙"
+  def initialize(color, board, pos)
+    super
+    @symbol = "♙"
   end
 end

@@ -29,26 +29,24 @@ module Slideable
     #             make sure the next sq != self.pos
       # x = self.pos[0] + dx
       # y = self.pos[1] + dy
-      current_pos = self.pos
-      7.times do |x|
-        new_x = current_pos[0] + dx
-        new_y = current_pos[1] + dy
-        poss_moves << [new_x, new_y]
-        current_pos = [new_x, new_y]
-      end
-
-      poss_moves.select! { |pos| pos[0].between(0,7) && pos[1].between(0,7) }
-
-      poss_moves.each_with_index do |pos, idx|
-        if self.board[pos].is_a?(Piece) && self.board[pos].color != self.color
-          poss_moves[0..idx]
-        elsif self.board[pos].is_a?(Piece) && self.board[pos].color == self.color
-          poss_moves[0...idx]
-        end
-      end
+    current_pos = self.pos
+    7.times do |x|
+      new_x = current_pos[0] + dx
+      new_y = current_pos[1] + dy
+      poss_moves << [new_x, new_y]
+      current_pos = [new_x, new_y]
     end
 
-    poss_moves
+    poss_moves.select! { |pos| pos[0].between?(0,7) && pos[1].between?(0,7) }
+
+    poss_moves.each_with_index do |pos, idx|
+      if self.board[pos].is_a?(Piece) && self.board[pos].color != self.color
+        return poss_moves[0..idx]
+      elsif self.board[pos].is_a?(Piece) && self.board[pos].color == self.color
+        return poss_moves[0...idx]
+      end
+    end
+    
   end
 
 end

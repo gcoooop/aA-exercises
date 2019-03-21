@@ -1,6 +1,6 @@
 require "colorize"
-require_relative "board.rb"
-require_relative "cursor.rb"
+require_relative "board"
+require_relative "cursor"
 require "byebug"
 
 #bottom left = black  [7, 0]
@@ -59,4 +59,4 @@ class Display
   end
 end
 
-p Display.new.get_move
+#p Display.new.get_move
