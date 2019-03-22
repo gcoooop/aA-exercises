@@ -55,4 +55,4 @@ class Display
   end
 end
 
-#p Display.new.get_move
+p Display.new.get_move

@@ -26,19 +26,20 @@ class Board
     @rows = Array.new(8) { Array.new(8, nil) }
     @sentinel = NullPiece.instance
     
-    (0..7).each do |col|
-      case PIECE_POSITIONS[col]
-      when :rook 
-        add_piece( Rook.new( :magenta, self, [0, col] ) )
-      when :knight 
-        add_piece( Knight.new( :magenta, self, [0, col] ) )
-      when :bishop
-        add_piece( Bishop.new( :magenta, self, [0, col] ) )
-      when :queen 
-        add_piece( Queen.new( :magenta, self, [0, col] ) )
-      when :king
-      end
-    end
+    # (0..7).each do |col|
+    #   case PIECE_POSITIONS[col]
+    #   when :rook 
+    #     add_piece( Rook.new( :magenta, self, [0, col] ) )
+    #   when :knight 
+    #     add_piece( Knight.new( :magenta, self, [0, col] ) )
+    #   when :bishop
+    #     add_piece( Bishop.new( :magenta, self, [0, col] ) )
+    #   when :queen 
+    #     add_piece( Queen.new( :magenta, self, [0, col] ) )
+    #   when :king
+    #     add_piece( King.new( :magenta, self, [0, col] ) )
+    #   end
+    # end
 
     WHITE_STARTING_POSITIONS.each do |pos|
       add_piece(Pawn.new(:magenta, self, pos), pos )
