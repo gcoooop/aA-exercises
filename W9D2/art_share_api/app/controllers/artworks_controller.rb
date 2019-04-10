@@ -1,12 +1,9 @@
 class ArtworksController < ApplicationController
   
-  def index
-    # artworks = Artwork.all
-    # artwork_ids = Artwork.select(:id).where(artist_id: params[:user_id]).id + ArtworkShare.select(:artwork_id).where(viewer_id: params[:user_id])
-    
-    ids = Artwork.where(artist_id: params[:user_id]).ids + ArtworkShare.where(viewer_id: params[:user_id]).pluck(:artwork_id)
-    artworks = Artwork.where("id IN (#{ids})")
-
+  def index    
+    # ids = Artwork.where(artist_id: params[:user_id]).ids + ArtworkShare.where(viewer_id: params[:user_id]).pluck(:artwork_id)
+    # artworks = Artwork.where(id: ids)
+    artworks = Artwork.find_artworks(params[:user_id])
     render json: artworks
   end
   

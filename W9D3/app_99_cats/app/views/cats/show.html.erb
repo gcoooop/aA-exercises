@@ -1,0 +1,31 @@
+<h1>Show Cat</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birthday</th>
+            <th>Color</th>
+            <th>Sex</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> <%= @cat.name %> </td>
+            <td> <%= @cat.birth_date %> </td>
+            <td> <%= @cat.color %> </td>
+            <td> <%= @cat.sex %> </td>
+            <td> <%= @cat.description %> </td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="<%= edit_cat_url(@cat) %>">Fix this cat</a>
+
+
+<form action="<%= cat_url(@cat)%>" method="POST" >
+    <input type="hidden" name="_method" value="DELETE">
+    <input type='submit' value='Delete this cat'>
+</form>
+

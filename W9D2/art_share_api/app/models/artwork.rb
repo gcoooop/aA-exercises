@@ -23,7 +23,7 @@ class Artwork < ApplicationRecord
     through: :artwork_shares, 
     source: :viewer
 
-  def self.find_shared(user_id)
+  def self.find_artworks(user_id)
     Artwork
       .joins(:artwork_shares)
       .where("artwork_shares.viewer_id = :id OR artworks.artist_id = :id", {:id => user_id})

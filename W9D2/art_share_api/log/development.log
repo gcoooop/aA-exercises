@@ -2626,3 +2626,15 @@ LINE 1: SELECT "artworks".* FROM "artworks" WHERE (id IN ([4, 4]))
 :
   app/controllers/artworks_controller.rb:10:in `index'
 
+Started GET "/users/4/artworks" for ::1 at 2019-04-09 16:44:53 -0700
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"4"}
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "artworks"."id" FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 4]]
+  ↳ app/controllers/artworks_controller.rb:7
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "artwork_shares"."artwork_id" FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 4]]
+  ↳ app/controllers/artworks_controller.rb:7
+  [1m[36mArtwork Load (1.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."id" IN ($1, $2)[0m  [["id", 4], ["id", 4]]
+  ↳ app/controllers/artworks_controller.rb:10
+Completed 200 OK in 461ms (Views: 51.0ms | ActiveRecord: 41.8ms)
+
+

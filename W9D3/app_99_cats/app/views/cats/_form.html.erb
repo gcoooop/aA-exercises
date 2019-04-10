@@ -1,0 +1,68 @@
+<% if cat.persisted? %>
+    <% action = cat_url(@cat) %>
+    <% h1 = "Fix Cat" %>
+    <% button_text = "Fix this cat" %>
+<% else %>
+    <% action = cats_url %>
+    <% h1 = "Build Cat" %>
+    <% button_text = "Build this cat" %>
+<% end %>
+
+
+
+<h1> <%= h1 %> </h1>
+
+<form action="<%= action %>" method="POST">
+    <% if cat.persisted? %>    
+        <input type="hidden" name="_method" value="PATCH">
+    <% end %>
+    
+    <label for="name">Name</label>
+    <input type="text" id="name" name="cat[name]" value="<%= @cat.name %>">
+
+    <br>
+    <br>
+
+    <label for="sex">Sex</label>
+    
+
+    <% @sexes.each do |sex| %>
+        <% if @cat.sex == sex %>
+            <input type="radio" id="sex" name="cat[sex]" value ="<%= sex %>" checked > <%= sex %>   
+        <% else %>
+            <input type="radio" id="sex" name="cat[sex]" value ="<%= sex %>"> <%= sex %>
+        <% end %>
+    <% end %>
+    
+    
+
+    <br>
+    <br>
+
+    <label for="color">Color</label>
+    <select name="cat[color]">
+        <option value="" disabled > -- Select a color -- </option>
+        <% @colors.each do |color|%>
+            <% if @cat.color == color %>
+                <option value="<%= color %>" selected> <%= color %> </option>  
+            <% else %>
+                <option value="<%= color %>"> <%= color %> </option>  
+            <% end %>     
+        <% end %>
+    </select>
+
+    <br>
+    <br>
+
+    <label for="cat_b_date">Birth Date</label>
+    <input type="date" name="cat[birth_date]" id="cats_b_date" value="<%= @cat.birth_date %>">
+
+    <br>
+    <br>
+
+    <label for="description">Description</label>
+    <textarea name="cat[description]" id="description" value="<%= @cat.description %>"> <%= @cat.description %></textarea>
+
+    <input type="submit" value="<%=button_text%>">
+
+</form>
