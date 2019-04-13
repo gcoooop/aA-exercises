@@ -1,0 +1,13 @@
+<h2>Bands Index</h2>
+
+<% if logged_in? %>
+  <a href="<%= new_band_url %>">Create A Band!</a>
+<% end %>
+<br>
+<br>
+
+<% @bands.each do |band| %>
+  <a href="<%= band_url(band) %>"><%= band.name %></a>
+  <br>
+<% end %>
+

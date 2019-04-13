@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <header>
+    <%= stylesheet_link_tag "application.css" %>
+    <h1>Music App</h1>
+
+    <% if current_user %>
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Sign Out">
+      </form>
+    <% else %>
+      <form action="<%= new_session_url %>" method="GET">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Sign In">
+      </form>
+      
+      <form action="<%= new_user_url %>" method="GET">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Register">
+      </form>
+    <% end %>
+  </header>
+
+<%= flash[:errors] if flash[:errors] %>
+
+  <body>
+    <%= yield %>
+  </body>
+<br>
+<a href="<%= bands_url %>">Back to Index</a>
+</html>

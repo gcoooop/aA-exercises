@@ -1,0 +1,11 @@
+<h2><%= @album.title %> by <%= @album.band.name %></h2>
+
+<% if logged_in? %>
+    <a href="<%= edit_album_url %>">Edit this Album</a>
+
+    <form action="<%= album_url(@album) %>" method="POST">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete this album">
+    </form>
+  <% end %>
