@@ -1,0 +1,22 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 600px;
+}
+
+li {
+  border: 1px solid black;
+  background: gray;
+  width: 33%;
+  height: 33%;
+  list-style: none;
+  font-size: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li:hover {
+  background: yellow;
+}

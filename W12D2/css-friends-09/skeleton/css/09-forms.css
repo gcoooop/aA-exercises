@@ -1,0 +1,26 @@
+/* PHASE 9: Forms */
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.input label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.input label * {
+  background: white;
+  width: calc(100% - 50px);
+}
+
+form {
+  background: gray;
+}
+
+.submit {
+  display: flex;
+}
