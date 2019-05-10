@@ -117,7 +117,6 @@ var receiveTodo = function receiveTodo(todo) {
   };
 };
 var removeTodo = function removeTodo(todo) {
-  debugger;
   return {
     type: REMOVE_TODO,
     todo: todo
