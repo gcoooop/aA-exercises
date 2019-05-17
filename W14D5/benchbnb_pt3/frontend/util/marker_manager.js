@@ -11,6 +11,15 @@ export default class MarkerManager {
         this.markers[bench.id] = marker;
       };
     });
+
+    const benchesObj = {};
+    benches.forEach( bench => {
+      benchesObj[bench.id] = bench;
+    });
+
+    Object.keys(this.markers).forEach( markerId => {
+      if (!benchesObj[markerId]) delete this.markers[markerId];
+    });
   }
 
   createMarkerFromBench(bench) {

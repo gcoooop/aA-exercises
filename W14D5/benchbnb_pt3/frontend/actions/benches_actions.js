@@ -9,9 +9,9 @@ export const receiveBenches = benches => {
   };
 };
 
-export const fetchBenches = () => {
+export const fetchBenches = filters => {
   return dispatch => {
-    return BenchApiUtil.fetchBenches()
+    return BenchApiUtil.fetchBenches(filters)
       .then( benches => dispatch(receiveBenches(benches)) );
   };
 };
