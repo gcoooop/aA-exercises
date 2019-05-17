@@ -18,4 +18,4 @@ const mstp = state => {
   return {loggedIn: Boolean(state.session.id)};
 };
 
-export const AuthRoute = withRouter(connect(mstp,null)(Auth));
+export const AuthRoute = withRouter(connect(mstp, null)(Auth));
