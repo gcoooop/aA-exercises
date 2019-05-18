@@ -8,6 +8,6 @@ export const updateBounds = bounds => {
         type: UPDATE_BOUNDS,
         bounds
       })
-    return fetchBenches(getState().filters)(dispatch)
+    return fetchBenches(getState().filters)(dispatch);  
   };
 };

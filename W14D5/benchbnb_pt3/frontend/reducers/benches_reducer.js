@@ -4,7 +4,7 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_BENCHES:
-      return Object.assign({}, state, action.benches);
+      return action.benches;
   
     default:
       return state;
